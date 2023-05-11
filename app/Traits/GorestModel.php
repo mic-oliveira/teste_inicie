@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use App\Exceptions\GorestException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Http;
 
 trait GorestModel

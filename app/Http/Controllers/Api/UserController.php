@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Actions\User\CreateUser;
-use App\Actions\User\FindUser;
 use App\Actions\User\ListUsers;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\UserResource;

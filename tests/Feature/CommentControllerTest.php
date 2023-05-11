@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class CommentControllerTest extends TestCase
 {
-
     public function test_it_list_comments()
     {
         $comments = Comment::factory()->count(5)->make()->toArray();
@@ -32,6 +31,19 @@ class CommentControllerTest extends TestCase
         Http::fake([
             env('GOREST_URL').'/posts/123456/comments' => Http::response($comment, 201)]);
         $response = $this->post('api/posts/123456/comments', $comment);
+        $response->assertCreated();
+    }
+
+    public function test_it_create_comment_first_public_post()
+    {
+        $posts = Post::factory()->count(5)->make();
+        $first_post = $posts->first();
+        $comment = Comment::factory()->makeOne()->toArray();
+        Http::fake([
+            env('GOREST_URL').'/posts/' => Http::response($posts),
+            env('GOREST_URL').'/posts/'.$first_post->id.'/comments' => Http::response($comment, 201)
+        ]);
+        $response = $this->post('api/comments?first_post=true', $comment);
         $response->assertCreated();
     }
 

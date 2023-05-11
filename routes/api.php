@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('users', UserController::class);
-Route::resource('users.posts', PostController::class)->only(['index','store']);
+Route::resource('users.posts', PostController::class)->only(['index', 'store']);
 Route::resource('posts', PostController::class)->only(['index', 'show', 'store']);
 Route::resource('posts.comments', CommentController::class)->only('store', 'index');
-Route::resource('comments', CommentController::class)->only('show', 'index', 'destroy');
+Route::resource('comments', CommentController::class)->only('show', 'store', 'index', 'destroy');

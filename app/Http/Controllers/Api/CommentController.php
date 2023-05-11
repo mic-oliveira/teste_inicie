@@ -24,7 +24,7 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $post_id)
+    public function store(Request $request, $post_id = null)
     {
         return CommentResource::make(CreateComment::run($request->all(), $post_id));
     }
@@ -43,6 +43,7 @@ class CommentController extends Controller
     public function destroy(string $id)
     {
         RemoveComment::run($id);
+
         return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }

@@ -16,6 +16,7 @@ class CreatePost
             : Http::gorest()->post('/posts', $post)->throw()->json();
         $post = new Post($gorestPost);
         $post->wasRecentlyCreated = true;
+
         return $post;
     }
 }

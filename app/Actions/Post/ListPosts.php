@@ -16,6 +16,7 @@ class ListPosts
     {
         $gorest = $user_id ? Http::gorest()->get('/users/'.$user_id.'posts'.$this->getQueryParams())
             : Http::gorest()->get('posts'.$this->getQueryParams());
+
         return $gorest->collect()->map(function ($item) {
             return new Post($item);
         });

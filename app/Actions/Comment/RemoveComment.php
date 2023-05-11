@@ -13,6 +13,7 @@ class RemoveComment
     {
         $comment = Comment::find($comment_id);
         $comment->delete();
+
         return $comment;
     }
 }
